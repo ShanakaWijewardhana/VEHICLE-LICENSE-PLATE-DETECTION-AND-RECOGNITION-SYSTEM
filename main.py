@@ -1,7 +1,7 @@
 import cv2
 import imutils #to resize out image
-
 import pytesseract
+
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # Read the image file
@@ -56,14 +56,13 @@ for contour in contours:
             x, y, w, h = cv2.boundingRect(contour)
             license_plate = gray_image[y:y + h, x:x + w]
             break
+        
 (thresh, license_plate) = cv2.threshold(license_plate, 127, 255, cv2.THRESH_BINARY)
 cv2.imshow("plate",license_plate)
 cv2.waitKey(0) 
 # Removing Noise from the detected image, before sending to Tesseract
 license_plate = cv2.bilateralFilter(license_plate, 11, 17, 17)
 (thresh, license_plate) = cv2.threshold(license_plate, 150, 180, cv2.THRESH_BINARY)
-
-
 
 #Text Recognition
 text = pytesseract.image_to_string(license_plate)
