@@ -2,10 +2,10 @@ import cv2
 import imutils #to resize out image
 import pytesseract
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = r"C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
 
 # Read the image file
-image = cv2.imread('car3.jpg')
+image = cv2.imread('car1.jpeg')
 image = imutils.resize(image , width=500)
 
 cv2.imshow("Original",image)
